@@ -327,9 +327,11 @@
             0% {
                 transform: scale(1);
             }
+
             50% {
                 transform: scale(1.1);
             }
+
             100% {
                 transform: scale(1);
             }
@@ -397,6 +399,36 @@
             gap: 1rem;
         }
 
+        .hero-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            align-items: center;
+        }
+
+        .hero-social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: #fff;
+            font-size: 1.25rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-social-link:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            color: var(--bg-color);
+            transform: translateY(-3px);
+        }
+
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 5rem;
@@ -409,6 +441,17 @@
             .hero-cta {
                 flex-direction: column;
                 width: 80%;
+            }
+
+            .hero-social {
+                justify-content: center;
+                margin-top: 1.5rem;
+            }
+
+            .hero-social-link {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
             }
         }
 
@@ -1163,6 +1206,23 @@
                 <div class="hero-cta">
                     <a href="#music" class="btn btn-primary">Listen Now</a>
                     <a href="#events" class="btn btn-secondary">View Events</a>
+                </div>
+                <div class="hero-social">
+                    <a href="https://instagram.com/djjai" target="_blank" class="hero-social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://open.spotify.com/artist/djjai" target="_blank" class="hero-social-link">
+                        <i class="fab fa-spotify"></i>
+                    </a>
+                    <a href="https://soundcloud.com/djjai" target="_blank" class="hero-social-link">
+                        <i class="fab fa-soundcloud"></i>
+                    </a>
+                    <a href="https://youtube.com/@djjai" target="_blank" class="hero-social-link">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://facebook.com/djjai" target="_blank" class="hero-social-link">
+                        <i class="fab fa-facebook"></i>
+                    </a>
                 </div>
             </div>
         </section>
