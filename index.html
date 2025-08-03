@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DJ JAI – Midnight Industrial</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Bebas+Neue&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+    <style>
+        /*
+        ==================================
+        NEW DESIGN: MIDNIGHT INDUSTRIAL
+        ==================================
+        */
+
+        :root {
+            --bg-color: #121212;
+            --panel-color: #1A1A1A;
+            --text-color: #E0E0E0;
+            --text-muted: #888888;
+            --accent-color: #FFFFFF;
+            --accent-hover: #E0E0E0;
+            --border-color: #333333;
+            --font-display: 'Bebas Neue', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+        }
+
+        /* Base & Typography */
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            /* Subtle noise texture for an industrial feel */
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAKxJREFUaIHt1rENACAMAEHt/Vd7wWoESUrA/c33f2dkZ2SnpWelZ6VnpWelZ6VnpWelZ6VnpWelZ6VnpWelZ6VnpWelZ6VnpWelZ6VnpWelZ6VnpWelZ6VnpWelZ6VnpWelZ6VnpWelZ6VnpWelZ6VnpWelZ6VnpWelZ6VnpWelZ6VnpWelZ6VnpWelZ6VnpWelZ6VnpWelZ6VnpWelZ6VnpWelZ6VnpWelZ6VnpWelZ6Vn5vM0N8AImTjP4vH4AAAAASUVORK5CYII=');
+            font-family: var(--font-body);
+            color: var(--text-color);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-display);
+            letter-spacing: 1.5px;
+            color: #FFFFFF;
+        }
+
+        p {
+            line-height: 1.7;
+            color: var(--text-muted);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 0.75rem 2rem;
+            border-radius: 2px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            font-weight: 700;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            color: var(--bg-color);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #FFFFFF;
+            border-color: #FFFFFF;
+        }
+
+        .btn-secondary:hover {
+            background-color: #FFFFFF;
+            color: var(--bg-color);
+            transform: translateY(-3px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 0;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-size: 4rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto 4rem auto;
+        }
+
+        /* Navigation */
+        #navbar {
+            background-color: rgba(18, 18, 18, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 2rem;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-brand img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 2px;
+            border: 2px solid var(--border-color);
+        }
+
+        .nav-brand .logo-text {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        .nav-links {
+            display: none;
+            /* Hidden on mobile by default */
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+            }
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            display: none;
+            /* Hidden on mobile by default */
+        }
+
+        @media (min-width: 768px) {
+            .nav-cta {
+                display: block;
+            }
+
+            .nav-cta .btn {
+                padding: 0.5rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: block;
+            color: white;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-menu-toggle {
+                display: none;
+            }
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 320px;
+            height: 100vh;
+            background-color: var(--panel-color);
+            z-index: 1000;
+            transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            border-left: 1px solid var(--border-color);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu a {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: white;
+            text-decoration: none;
+            padding: 1rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 0;
+        }
+
+        .hero-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            filter: grayscale(100%) contrast(1.2);
+            z-index: 1;
+            transform: scale(1);
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            z-index: 2;
+            animation: zoomInOut 5s ease-in-out infinite;
+        }
+
+        @keyframes zoomInOut {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .hero-slide:nth-child(1) {
+            background-image: url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1920&q=80');
+        }
+
+        .hero-slide:nth-child(2) {
+            background-image: url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1920&q=80');
+        }
+
+        .hero-slide:nth-child(3) {
+            background-image: url('https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?auto=format&fit=crop&w=1920&q=80');
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg,
+                    rgba(0, 0, 0, 0.8) 0%,
+                    rgba(0, 0, 0, 0.6) 25%,
+                    rgba(255, 255, 255, 0.1) 50%,
+                    rgba(0, 0, 0, 0.6) 75%,
+                    rgba(0, 0, 0, 0.8) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-title {
+            font-size: 8rem;
+            line-height: 1;
+            margin: 0;
+            color: #fff;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            max-width: 500px;
+            margin: 2rem 0;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                width: 80%;
+            }
+        }
+
+        /* About Section */
+        #about .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        #about .about-image img {
+            width: 100%;
+            object-fit: cover;
+            filter: grayscale(80%);
+            transition: filter 0.5s ease;
+        }
+
+        #about .about-image:hover img {
+            filter: grayscale(0%);
+        }
+
+        #about h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-grid {
+            margin-top: 2rem;
+        }
+
+        .skill-item {
+            margin-bottom: 1rem;
+        }
+
+        .skill-item .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .skill-bar-bg {
+            width: 100%;
+            height: 8px;
+            background-color: var(--border-color);
+            border-radius: 1px;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            background-color: var(--accent-color);
+            border-radius: 1px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            background-color: var(--panel-color);
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-item .stat-number {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            color: var(--accent-color);
+        }
+
+        .stat-item .stat-label {
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            #about .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Music Section */
+        #music {
+            background-color: var(--panel-color);
+        }
+
+        #music .spotify-embed {
+            max-width: 900px;
+            margin: 2rem auto 0 auto;
+        }
+
+        #music iframe {
+            border-radius: 2px !important;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Services Section */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .package-card {
+            background-color: var(--panel-color);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .package-card.popular {
+            border-color: var(--accent-color);
+            position: relative;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 0;
+            right: 1.5rem;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            padding: 0.25rem 1rem;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transform: translateY(-50%);
+        }
+
+        .package-card h3 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .package-description {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            min-height: 40px;
+        }
+
+        .package-price {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            text-align: center;
+            color: var(--accent-color);
+            margin: auto 0 2rem 0;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2.5rem;
+            flex-grow: 1;
+        }
+
+        .features-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+        }
+
+        .features-list .fa-check {
+            color: var(--accent-color);
+            margin-right: 0.75rem;
+        }
+
+        .features-list .fa-times {
+            color: #555;
+            margin-right: 0.75rem;
+        }
+
+        .package-card .btn {
+            width: 100%;
+        }
+
+        @media (max-width: 1024px) {
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Gallery Section */
+        #gallery {
+            background-color: var(--panel-color);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease, filter 0.5s ease;
+            filter: grayscale(100%) contrast(1.1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: grayscale(0%) contrast(1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            font-size: 3rem;
+            color: white;
+        }
+
+        .gallery-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        /* Events Section */
+        .event-list {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .event-item {
+            display: flex;
+            background-color: var(--panel-color);
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s ease;
+            align-items: stretch;
+        }
+
+        .event-item:hover {
+            background-color: #2a2a2a;
+        }
+
+        .event-date {
+            padding: 1.5rem 2rem;
+            text-align: center;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .event-date .month {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+        }
+
+        .event-date .day {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            line-height: 1;
+        }
+
+        .event-info {
+            padding: 1.5rem 2rem;
+            flex-grow: 1;
+        }
+
+        .event-info h3 {
+            font-size: 1.75rem;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .event-info p {
+            margin: 0;
+            color: var(--text-muted);
+        }
+
+        .event-info .location {
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .event-action {
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .event-action .btn-secondary {
+            padding: 0.5rem 1.5rem;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .event-item {
+                flex-direction: column;
+            }
+
+            .event-date {
+                width: 100%;
+            }
+
+            .event-action {
+                justify-content: flex-start;
+                padding-top: 0;
+            }
+        }
+
+        /* Testimonials Section */
+        #testimonials {
+            background-color: var(--panel-color);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+        }
+
+        .testimonial-card .quote {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-name {
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .author-title {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 1024px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            background-color: var(--panel-color);
+            border: 1px solid var(--border-color);
+            padding: 4rem;
+        }
+
+        .contact-info-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info-item .icon {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-top: 0.25rem;
+        }
+
+        .contact-info-item h4 {
+            font-size: 1.5rem;
+            margin: 0 0 0.25rem 0;
+        }
+
+        .contact-info-item p,
+        .contact-info-item a {
+            margin: 0;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info-item a:hover {
+            color: var(--accent-color);
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-form .form-control {
+            width: 100%;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 0.75rem 1rem;
+            border-radius: 2px;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                padding: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--panel-color);
+            padding: 4rem 0 2rem 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-about h4 {
+            font-size: 1.75rem;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .footer-socials a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+            text-decoration: none;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-socials a:hover {
+            color: var(--bg-color);
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .footer-links h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 0.35rem 0;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links li a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* --- Utility & Helper classes --- */
+        .hidden {
+            display: none;
+        }
+
+        /* --- Loading Screen (Original, kept for functionality) --- */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 1s ease;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(212, 155, 95, 0.3);
+            border-top: 3px solid var(--accent-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* --- Modals (Original, restyled for new theme) --- */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(18, 18, 18, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5000;
+        }
+
+        .modal-content {
+            background-color: var(--panel-color);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close-btn:hover {
+            color: #fff;
+        }
+
+        #galleryModal img {
+            max-height: 75vh;
+            object-fit: contain;
+        }
+
+        #galleryModal .modal-content {
+            max-width: 1000px;
+        }
+
+        #modalImageTitle {
+            font-size: 2rem;
+            margin-top: 1rem;
+        }
+
+        #modalImageDescription {
+            color: var(--text-muted);
+        }
+
+        .modal-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-color);
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-nav-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        #prevImage {
+            left: 1rem;
+        }
+
+        #nextImage {
+            right: 1rem;
+        }
+    </style>
+
+    <!-- This script is a placeholder. In a real project, you would link to your actual JS file. -->
+    <!-- <script src="./js/data-manager.js"></script> -->
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-overlay" id="loading">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container nav-content">
+            <a href="#home" class="nav-brand">
+                <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                    alt="DJ JAI Logo"
+                    onerror="this.onerror=null;this.src='https://placehold.co/50x50/121212/D49B5F?text=JAI';">
+                <span class="logo-text">JAI</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#music">Music</a>
+                <a href="#events">Events</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#services">Services</a>
+            </div>
+
+            <div class="nav-cta">
+                <a href="#contact" class="btn btn-primary">Book Now</a>
+            </div>
+
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#home" class="mobile-nav-link">Home</a>
+        <a href="#about" class="mobile-nav-link">About</a>
+        <a href="#music" class="mobile-nav-link">Music</a>
+        <a href="#events" class="mobile-nav-link">Events</a>
+        <a href="#gallery" class="mobile-nav-link">Gallery</a>
+        <a href="#services" class="mobile-nav-link">Services</a>
+        <a href="#contact" class="mobile-nav-link btn btn-primary" style="margin-top: 1rem;">Book Now</a>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home">
+            <div class="hero-slideshow">
+                <div class="hero-slide"></div>
+                <div class="hero-slide"></div>
+                <div class="hero-slide"></div>
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content" data-aos="fade-right">
+                <h1 class="hero-title">DJ JAI</h1>
+                <p class="hero-subtitle">
+                    Electrify Your World with Sonic Excellence. Raw energy, industrial beats, and unforgettable nights.
+                </p>
+                <div class="hero-cta">
+                    <a href="#music" class="btn btn-primary">Listen Now</a>
+                    <a href="#events" class="btn btn-secondary">View Events</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">Behind The Decks</h2>
+                <p class="section-subtitle">
+                    Discover the passion, skill, and dedication that drives DJ JAI's electrifying performances.
+                </p>
+                <div class="grid">
+                    <div class="about-image" data-aos="fade-right">
+                        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=987&q=80"
+                            alt="DJ JAI performing"
+                            onerror="this.onerror=null;this.src='https://placehold.co/600x800/1A1A1A/E0E0E0?text=DJ+JAI';">
+                    </div>
+                    <div class="about-content" data-aos="fade-left">
+                        <h3>The Artist's Journey</h3>
+                        <p>From underground raves to international festivals, DJ JAI has been pushing the boundaries of
+                            electronic music for over a decade. Known for innovative mixing techniques and an
+                            unparalleled ability to read the crowd, JAI creates sonic experiences that transcend the
+                            ordinary.</p>
+
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span>Mixing & Beatmatching</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="skill-bar-bg">
+                                    <div class="skill-bar-fill" style="width: 95%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span>Crowd Reading</span>
+                                    <span>98%</span>
+                                </div>
+                                <div class="skill-bar-bg">
+                                    <div class="skill-bar-fill" style="width: 98%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span>Music Production</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="skill-bar-bg">
+                                    <div class="skill-bar-fill" style="width: 90%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number">500+</div>
+                                <div class="stat-label">Live Shows</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">50+</div>
+                                <div class="stat-label">Countries</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">50+</div>
+                                <div class="stat-label">Tracks</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">1M+</div>
+                                <div class="stat-label">Streams</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Music Section -->
+        <section id="music">
+            <div class="container">
+                <h2 class="section-title">Latest Tracks</h2>
+                <p class="section-subtitle">
+                    Experience the evolution of sound with my latest productions and exclusive mixes.
+                </p>
+                <div class="spotify-embed" data-aos="fade-up">
+                    <iframe style="border-radius:2px"
+                        src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?theme=0" width="100%"
+                        height="352" frameBorder="0" allowfullscreen=""
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services">
+            <div class="container">
+                <h2 class="section-title">DJ Packages</h2>
+                <p class="section-subtitle">
+                    Professional DJ services with premium equipment for events of all sizes.
+                </p>
+                <div class="packages-grid">
+                    <!-- Standard Package -->
+                    <div class="package-card" data-aos="fade-up" data-aos-delay="100">
+                        <h3>Standard Package</h3>
+                        <p class="package-description">Small events (up to 100 pax)</p>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> 5 Hour DJ Set</li>
+                            <li><i class="fas fa-check"></i> Standard DJ Booth</li>
+                            <li><i class="fas fa-check"></i> 2 x 1,000-Watt Speakers</li>
+                            <li><i class="fas fa-check"></i> 1 x Wireless Microphone</li>
+                            <li><i class="fas fa-check"></i> 2 x LED Lights</li>
+                            <li><i class="fas fa-times"></i> Haze Machine</li>
+                            <li><i class="fas fa-times"></i> Site Inspection</li>
+                        </ul>
+                        <div class="package-price">$1,200</div>
+                        <a href="#contact" class="btn btn-secondary book-now-btn" data-package="Standard">Book Now</a>
+                    </div>
+
+                    <!-- Premium Package -->
+                    <div class="package-card popular" data-aos="fade-up" data-aos-delay="200">
+                        <div class="popular-badge">Popular</div>
+                        <h3>Premium Package</h3>
+                        <p class="package-description">Medium events (up to 200 people)</p>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> 6 Hour DJ Set</li>
+                            <li><i class="fas fa-check"></i> Premium DJ Booth</li>
+                            <li><i class="fas fa-check"></i> 2 x 2,000-Watt Speakers</li>
+                            <li><i class="fas fa-check"></i> 2 x Wireless Microphones</li>
+                            <li><i class="fas fa-check"></i> 2 x Moving Lights</li>
+                            <li><i class="fas fa-check"></i> Haze Machine (venue perm.)</li>
+                            <li><i class="fas fa-times"></i> Site Inspection</li>
+                        </ul>
+                        <div class="package-price">$2,000</div>
+                        <a href="#contact" class="btn btn-primary book-now-btn" data-package="Premium">Book Now</a>
+                    </div>
+
+                    <!-- Ultra-Premium Package -->
+                    <div class="package-card" data-aos="fade-up" data-aos-delay="300">
+                        <h3>Ultra-Premium</h3>
+                        <p class="package-description">Large events (up to 400 pax)</p>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> Extended DJ Set</li>
+                            <li><i class="fas fa-check"></i> Premium DJ Booth</li>
+                            <li><i class="fas fa-check"></i> 2 x 3,000-Watt Speakers</li>
+                            <li><i class="fas fa-check"></i> 4 x 10" Delay Speakers</li>
+                            <li><i class="fas fa-check"></i> 4 x Moving Lights</li>
+                            <li><i class="fas fa-check"></i> Haze Machine (venue perm.)</li>
+                            <li><i class="fas fa-check"></i> Site Inspection</li>
+                        </ul>
+                        <div class="package-price">$3,200</div>
+                        <a href="#contact" class="btn btn-secondary book-now-btn" data-package="Ultra-Premium">Book
+                            Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery">
+            <div class="container">
+                <h2 class="section-title">Live Moments</h2>
+                <p class="section-subtitle">Pure energy captured in motion.</p>
+                <div class="gallery-grid" data-aos="fade-up">
+                    <div class="gallery-item gallery-clickable"
+                        data-image="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80"
+                        data-title="Main Stage Performance"
+                        data-description="DJ JAI electrifying the crowd at SoundWave Festival">
+                        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80"
+                            alt="Gallery Image 1"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x300/1A1A1A/E0E0E0?text=Live+Show';">
+                        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                    </div>
+                    <div class="gallery-item gallery-clickable"
+                        data-image="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80"
+                        data-title="Club Night"
+                        data-description="Intimate club setting with perfect lighting and atmosphere">
+                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80"
+                            alt="Gallery Image 2"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x300/1A1A1A/E0E0E0?text=Club+Night';">
+                        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                    </div>
+                    <div class="gallery-item gallery-clickable"
+                        data-image="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=800&q=80"
+                        data-title="Crowd Energy"
+                        data-description="The energy and excitement of the crowd during a live performance">
+                        <img src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=800&q=80"
+                            alt="Gallery Image 3"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x300/1A1A1A/E0E0E0?text=Crowd';">
+                        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                    </div>
+                    <div class="gallery-item gallery-clickable"
+                        data-image="https://images.unsplash.com/photo-1496337589254-7e19d01cec44?auto=format&fit=crop&w=800&q=80"
+                        data-title="Festival Vibes" data-description="Epic festival moment captured under the lights">
+                        <img src="https://images.unsplash.com/photo-1496337589254-7e19d01cec44?auto=format&fit=crop&w=800&q=80"
+                            alt="Gallery Image 4"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x300/1A1A1A/E0E0E0?text=Festival';">
+                        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                    </div>
+                </div>
+                <div class="gallery-cta">
+                    <a href="#" class="btn btn-primary"
+                        onclick="alert('This would lead to a full gallery page.')">Explore Full Gallery</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events">
+            <div class="container">
+                <h2 class="section-title">Upcoming Events</h2>
+                <p class="section-subtitle">Join me at these electrifying venues.</p>
+                <div class="event-list" id="eventsContainer" data-aos="fade-up">
+                    <!-- Dynamic events will be loaded here by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials">
+            <div class="container">
+                <h2 class="section-title">What People Say</h2>
+                <p class="section-subtitle">Hear from satisfied clients and fellow artists.</p>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                        <p class="quote">"DJ JAI made our wedding absolutely perfect. The music selection was spot-on
+                            and kept everyone dancing all night!"</p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=60&h=60&q=80"
+                                alt="Client Mark Johnson"
+                                onerror="this.onerror=null;this.src='https://placehold.co/60x60/1A1A1A/E0E0E0?text=M';">
+                            <div>
+                                <div class="author-name">Mark Johnson</div>
+                                <div class="author-title">Wedding Client</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                        <p class="quote">"Professional, punctual, and incredibly talented. JAI elevated our corporate
+                            event to the next level."</p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=60&h=60&q=80"
+                                alt="Client Sarah Chen"
+                                onerror="this.onerror=null;this.src='https://placehold.co/60x60/1A1A1A/E0E0E0?text=S';">
+                            <div>
+                                <div class="author-name">Sarah Chen</div>
+                                <div class="author-title">Event Manager</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                        <p class="quote">"JAI knows how to read a crowd like no other. The energy at our festival was
+                            absolutely electric!"</p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=60&h=60&q=80"
+                                alt="Client Alex Rivera"
+                                onerror="this.onerror=null;this.src='https://placehold.co/60x60/1A1A1A/E0E0E0?text=A';">
+                            <div>
+                                <div class="author-name">Alex Rivera</div>
+                                <div class="author-title">Festival Organizer</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Book Your Night</h2>
+                <p class="section-subtitle">Ready to electrify your event? Get in touch for bookings, collaborations, or
+                    just to say hello.</p>
+                <div class="contact-grid" data-aos="fade-up">
+                    <div class="contact-info">
+                        <h3>Get In Touch</h3>
+                        <p style="margin-bottom: 2rem;">Use the form for booking inquiries, or reach out directly. I
+                            typically respond within 24 hours.</p>
+
+                        <div class="contact-info-item">
+                            <div class="icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <h4>Email</h4>
+                                <a href="mailto:booking@djjai.com">booking@djjai.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="icon"><i class="fas fa-phone"></i></div>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Los Angeles, CA</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" id="name" name="name" required class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dj-package">DJ Package</label>
+                            <select id="dj-package" name="dj-package" class="form-control">
+                                <option value="">Select DJ Package</option>
+                                <option value="Standard">Standard DJ Package - $1,200</option>
+                                <option value="Premium">Premium DJ Package - $2,000</option>
+                                <option value="Ultra-Premium">Ultra-Premium DJ Package - $3,200</option>
+                                <option value="Custom">Custom Package (discuss pricing)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" class="form-control"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Gallery Modal -->
+    <div id="galleryModal" class="modal-overlay hidden">
+        <div class="modal-content text-center">
+            <button id="closeGalleryModal" class="modal-close-btn"><i class="fas fa-times"></i></button>
+            <img id="modalImage" src="" alt="Gallery Image">
+            <h3 id="modalImageTitle"></h3>
+            <p id="modalImageDescription"></p>
+        </div>
+        <button id="prevImage" class="modal-nav-btn"><i class="fas fa-chevron-left"></i></button>
+        <button id="nextImage" class="modal-nav-btn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h4>DJ JAI</h4>
+                    <p>Electrifying audiences worldwide with cutting-edge electronic music and unforgettable
+                        performances.</p>
+                    <div class="footer-socials">
+                        <a href="https://instagram.com/djjai"><i class="fab fa-instagram"></i></a>
+                        <a href="https://open.spotify.com/artist/djjai"><i class="fab fa-spotify"></i></a>
+                        <a href="https://soundcloud.com/djjai"><i class="fab fa-soundcloud"></i></a>
+                        <a href="https://youtube.com/@djjai"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#music">Music</a></li>
+                        <li><a href="#events">Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Wedding DJ</a></li>
+                        <li><a href="#services">Corporate Events</a></li>
+                        <li><a href="#services">Private Parties</a></li>
+                        <li><a href="#services">Music Production</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:booking@djjai.com">booking@djjai.com</a></li>
+                        <li><a href="#">+1 (555) 123-4567</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 DJ JAI. All rights reserved. Industrial Design Concept.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50
+        });
+
+        // Loading screen
+        window.addEventListener('load', () => {
+            const loadingScreen = document.getElementById('loading');
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 1000);
+        });
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuIcon = mobileMenuToggle.querySelector('i');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            const isActive = mobileMenu.classList.toggle('active');
+            mobileMenuIcon.className = isActive ? 'fas fa-times' : 'fas fa-bars';
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                mobileMenuIcon.className = 'fas fa-bars';
+            });
+        });
+
+        // Dynamic Events Loading
+        function loadDynamicEvents() {
+            // This is dummy data. In a real scenario, this would come from an API or a separate JS file.
+            const activeTours = [
+                { id: 'soundwave', date: '2025-08-15', title: 'SoundWave Festival', location: 'New York, USA', venue: 'Central Park SummerStage' },
+                { id: 'elysium', date: '2025-09-02', title: 'Club Elysium', location: 'Berlin, Germany', venue: 'Elysium Underground' },
+                { id: 'jungle', date: '2025-10-21', title: 'Electric Jungle', location: 'Tokyo, Japan', venue: 'Tokyo Dome City Hall' }
+            ];
+
+            const eventsContainer = document.getElementById('eventsContainer');
+            if (!eventsContainer) return;
+
+            if (activeTours.length === 0) {
+                eventsContainer.innerHTML = `<div class="event-item"><div class="event-info" style="text-align: center; width: 100%;"><p>New events will be announced soon. Stay tuned!</p></div></div>`;
+                return;
+            }
+
+            eventsContainer.innerHTML = activeTours.map(tour => {
+                const date = new Date(tour.date);
+                const month = date.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
+                const day = date.getDate();
+
+                return `
+                    <div class="event-item">
+                        <div class="event-date">
+                            <span class="month">${month}</span>
+                            <span class="day">${day}</span>
+                        </div>
+                        <div class="event-info">
+                            <h3>${tour.title}</h3>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> ${tour.location}</p>
+                            <p>${tour.venue}</p>
+                        </div>
+                        <div class="event-action">
+                            <button class="btn btn-secondary" onclick="alert('Event details for ${tour.title} would open in a modal.')">Details</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', loadDynamicEvents);
+
+        // Hero Slideshow functionality
+        function initHeroSlideshow() {
+            const slides = document.querySelectorAll('.hero-slide');
+            let currentSlide = 0;
+
+            console.log('Found slides:', slides.length); // Debug log
+
+            // Ensure first slide is visible
+            if (slides.length > 0) {
+                slides[0].classList.add('active');
+                console.log('First slide activated'); // Debug log
+            }
+
+            function showNextSlide() {
+                // Remove active class from current slide
+                slides[currentSlide].classList.remove('active');
+
+                // Move to next slide
+                currentSlide = (currentSlide + 1) % slides.length;
+
+                // Add active class to new slide
+                slides[currentSlide].classList.add('active');
+
+                console.log('Showing slide:', currentSlide + 1, 'of', slides.length); // Debug log
+            }
+
+            // Change slide every 5 seconds
+            if (slides.length > 1) {
+                setInterval(showNextSlide, 5000);
+                console.log('Slideshow interval started'); // Debug log
+            }
+        }
+
+        // Initialize slideshow when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            loadDynamicEvents();
+            initHeroSlideshow();
+        });
+
+        // Gallery Modal functionality
+        const galleryModal = document.getElementById('galleryModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalImageTitle = document.getElementById('modalImageTitle');
+        const modalImageDescription = document.getElementById('modalImageDescription');
+        const closeGalleryModal = document.getElementById('closeGalleryModal');
+        const prevImageBtn = document.getElementById('prevImage');
+        const nextImageBtn = document.getElementById('nextImage');
+
+        let currentImageIndex = 0;
+        let galleryImages = [];
+
+        function initGallery() {
+            const galleryContainers = document.querySelectorAll('.gallery-clickable');
+            galleryImages = Array.from(galleryContainers).map(container => ({
+                src: container.getAttribute('data-image'),
+                title: container.getAttribute('data-title'),
+                description: container.getAttribute('data-description')
+            }));
+
+            galleryContainers.forEach((container, index) => {
+                container.addEventListener('click', () => openGalleryModal(index));
+            });
+        }
+
+        function openGalleryModal(index) {
+            currentImageIndex = index;
+            updateModalImage();
+            galleryModal.classList.remove('hidden');
+        }
+
+        function closeGalleryModalFunc() {
+            galleryModal.classList.add('hidden');
+        }
+
+        function updateModalImage() {
+            if (!galleryImages[currentImageIndex]) return;
+            const image = galleryImages[currentImageIndex];
+            modalImage.src = image.src;
+            modalImageTitle.textContent = image.title;
+            modalImageDescription.textContent = image.description;
+        }
+
+        function showPreviousImage() {
+            currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+            updateModalImage();
+        }
+
+        function showNextImage() {
+            currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+            updateModalImage();
+        }
+
+        closeGalleryModal.addEventListener('click', closeGalleryModalFunc);
+        prevImageBtn.addEventListener('click', showPreviousImage);
+        nextImageBtn.addEventListener('click', showNextImage);
+        galleryModal.addEventListener('click', (e) => {
+            if (e.target === galleryModal) closeGalleryModalFunc();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (galleryModal.classList.contains('hidden')) return;
+            if (e.key === 'Escape') closeGalleryModalFunc();
+            if (e.key === 'ArrowLeft') showPreviousImage();
+            if (e.key === 'ArrowRight') showNextImage();
+        });
+
+        document.addEventListener('DOMContentLoaded', initGallery);
+
+        // Form package pre-selection from 'Book Now' buttons
+        document.querySelectorAll('.book-now-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const packageType = button.getAttribute('data-package');
+                const contactSection = document.getElementById('contact');
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+
+                setTimeout(() => {
+                    const djPackageSelect = document.getElementById('dj-package');
+                    if (djPackageSelect && packageType) {
+                        djPackageSelect.value = packageType;
+                    }
+                }, 500);
+            });
+        });
+
+        // Contact Form Submission
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you shortly.');
+            contactForm.reset();
+        });
+    </script>
+</body>
+
+</html>
