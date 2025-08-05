@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJ JAI - Live Gallery | Midnight Industrial</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Bebas+Neue&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="./styles.css">
+
+    <style>
+        :root {
+            --bg-color: #121212;
+            --panel-color: #1A1A1A;
+            --text-color: #E0E0E0;
+            --text-muted: #888888;
+            --accent-color: #FFFFFF;
+            --accent-hover: #E0E0E0;
+            --border-color: #333333;
+            --font-display: 'Bebas Neue', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: var(--font-body);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* Hero Section Styles */
+        .hero-section {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, var(--bg-color) 0%, var(--panel-color) 100%);
+            padding-top: 80px;
+            /* Account for fixed navbar */
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--accent-color);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) translateX(0px);
+                opacity: 0.6;
+            }
+
+            25% {
+                transform: translateY(-20px) translateX(10px);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateY(-40px) translateX(-10px);
+                opacity: 0.8;
+            }
+
+            75% {
+                transform: translateY(-20px) translateX(15px);
+                opacity: 0.9;
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 1200px;
+            padding: 0 2rem;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: 6rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffffff, #cccccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            font-weight: 300;
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+            line-height: 1.7;
+        }
+
+        /* Button Styles */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            text-decoration: none;
+            font-family: var(--font-display);
+            font-size: 1.125rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            text-decoration: none;
+            font-family: var(--font-display);
+            font-size: 1.125rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            transform: translateY(-3px);
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 6rem 0;
+            background-color: var(--panel-color);
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 4rem;
+        }
+
+        /* Filter Buttons */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 2px solid var(--border-color);
+            color: var(--text-muted);
+            font-family: var(--font-display);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border-color: var(--accent-color);
+        }
+
+        .gallery-item img,
+        .gallery-item video {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s ease, filter 0.3s ease;
+            filter: grayscale(70%);
+        }
+
+        .gallery-item:hover img,
+        .gallery-item:hover video {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0.1));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .gallery-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-info {
+            transform: translateY(0);
+        }
+
+        .gallery-info h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .gallery-info p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Media Type Badge */
+        .media-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.8);
+            color: var(--accent-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            background: rgba(26, 26, 26, 0.9);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .modal-media {
+            max-width: 80vw;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .modal-info {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .modal-info h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-info p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .modal-close,
+        .modal-nav {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            color: var(--accent-color);
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-close:hover,
+        .modal-nav:hover {
+            background: var(--accent-color);
+            color: var(--bg-color);
+            transform: scale(1.1);
+        }
+
+        .modal-close {
+            top: 1rem;
+            right: 1rem;
+        }
+
+        .modal-prev {
+            top: 50%;
+            left: 1rem;
+            transform: translateY(-50%);
+        }
+
+        .modal-next {
+            top: 50%;
+            right: 1rem;
+            transform: translateY(-50%);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--accent-color);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 4rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 3rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Hidden class */
+        .hidden {
+            display: none;
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(18, 18, 18, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--accent-color);
+        }
+
+        .nav-brand img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 0.75rem;
+            border: 2px solid var(--accent-color);
+        }
+
+        .logo-text {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+
+        /* Background Effects */
+        .bg-effects {
+            position: absolute;
+            inset: 0;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--accent-color);
+            filter: blur(80px);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .bg-circle:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            width: 200px;
+            height: 200px;
+            animation-delay: 0s;
+        }
+
+        .bg-circle:nth-child(2) {
+            bottom: 20%;
+            right: 10%;
+            width: 300px;
+            height: 300px;
+            animation-delay: 2s;
+        }
+
+        .bg-circle:nth-child(3) {
+            top: 60%;
+            left: 60%;
+            width: 150px;
+            height: 150px;
+            animation-delay: 4s;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.3;
+                transform: scale(1.1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Dynamic Navigation will be inserted here -->
+    <div id="navbar-container"></div>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section" style="padding-top: 120px;">
+        <!-- Background Effects -->
+        <div class="bg-effects">
+            <div class="bg-circle"></div>
+            <div class="bg-circle"></div>
+            <div class="bg-circle"></div>
+        </div>
+
+        <div class="container">
+            <div data-aos="fade-up">
+                <h2 class="section-title">Live Moments</h2>
+                <p class="section-subtitle">Pure energy captured in motion - Extended Gallery</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="filter-buttons" data-aos="fade-up" data-aos-delay="100">
+                <button class="filter-btn active" data-filter="all">All Media</button>
+                <button class="filter-btn" data-filter="photos">Photos</button>
+                <button class="filter-btn" data-filter="videos">Videos</button>
+                <button class="filter-btn" data-filter="studio">Studio</button>
+                <button class="filter-btn" data-filter="live">Live Shows</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="gallery-grid" data-aos="fade-up" data-aos-delay="200" id="galleryGrid">
+                <!-- Gallery items will be dynamically loaded here -->
+            </div>
+
+            <!-- Back to Home Button -->
+            <div style="text-align: center; margin-top: 3rem;" data-aos="fade-up">
+                <a href="index.html" class="btn-primary">
+                    <i class="fas fa-home mr-2"></i>
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Modal -->
+    <div id="galleryModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <button class="modal-nav modal-prev" id="prevItem">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="modal-nav modal-next" id="nextItem">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <div id="modalMediaContainer">
+                <img id="modalImage" class="modal-media hidden" alt="Gallery Image">
+                <video id="modalVideo" class="modal-media hidden" controls>
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <div class="modal-info">
+                <h3 id="modalTitle"></h3>
+                <p id="modalDescription"></p>
+                <div style="margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                    <span id="modalCounter"></span> • Press ESC to close
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dynamic Footer will be inserted here -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./admin/data-api.js"></script>
+    <script src="./components/navbar.js"></script>
+    <script src="./components/footer.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50
+        });
+
+        // Gallery Data - Load from admin panel or use fallback
+        function loadGalleryData() {
+            if (typeof djjaiData !== 'undefined') {
+                const adminImages = djjaiData.getGalleryImages().map(item => ({
+                    type: 'photo',
+                    category: 'live',
+                    src: item.url,
+                    title: item.title,
+                    description: item.description || 'Gallery image from admin panel'
+                }));
+
+                const adminVideos = djjaiData.getGalleryVideos().map(item => ({
+                    type: 'video',
+                    category: 'live',
+                    src: item.url,
+                    title: item.title,
+                    description: item.description || 'Gallery video from admin panel'
+                }));
+
+                return [...adminImages, ...adminVideos];
+            } else {
+                // Fallback gallery data
+                return [
+                    {
+                        type: 'photo',
+                        category: 'live',
+                        src: './Asstes/Dj demo.jpg',
+                        title: 'Main Stage Performance',
+                        description: 'DJ JAI electrifying the crowd at SoundWave Festival with an unforgettable set.'
+                    },
+                    {
+                        type: 'photo',
+                        category: 'live',
+                        src: './Asstes/DJ_DEMO.jpg',
+                        title: 'Club Night Energy',
+                        description: 'Intimate club setting with perfect lighting and explosive atmosphere.'
+                    },
+                    {
+                        type: 'photo',
+                        category: 'live',
+                        src: './Asstes/dj-crowd.jpg',
+                        title: 'Crowd Connection',
+                        description: 'The energy and excitement of the crowd during a live performance.'
+                    },
+                    {
+                        type: 'photo',
+                        category: 'live',
+                        src: './Asstes/danny-howe-Hq9BwndSFAY-unsplash.jpg',
+                        title: 'Festival Vibes',
+                        description: 'Epic festival moment captured under the stage lights.'
+                    },
+                    {
+                        type: 'photo',
+                        category: 'studio',
+                        src: './Asstes/a-j-r3XvSBEQQLo-unsplash.jpg',
+                        title: 'Studio Sessions',
+                        description: 'Behind the scenes in the studio creating the next hit track.'
+                    },
+                    {
+                        type: 'photo',
+                        category: 'live',
+                        src: './Asstes/marcela-laskoski-YrtFlrLo2DQ-unsplash.jpg',
+                        title: 'Underground Scene',
+                        description: 'Raw energy from the underground electronic music scene.'
+                    },
+                    {
+                        type: 'photo',
+                        category: 'studio',
+                        src: './Asstes/photo-1496337589254-7e19d01cec44.avif',
+                        title: 'Mixing Console',
+                        description: 'Professional DJ equipment and mixing console in action.'
+                    },
+                    {
+                        type: 'photo',
+                        category: 'live',
+                        src: './Asstes/photo-1511222138462-5d03818b409c.avif',
+                        title: 'Night Performance',
+                        description: 'Late night set creating magical moments on the dancefloor.'
+                    },
+                    {
+                        type: 'photo',
+                        category: 'live',
+                        src: './Asstes/photo-1533174072545-7a4b6ad7a6c3.avif',
+                        title: 'Festival Lights',
+                        description: 'Spectacular light show synchronizing with the beats.'
+                    },
+                    {
+                        type: 'photo',
+                        category: 'live',
+                        src: './Asstes/photo-1542628682-88321d2a4828.avif',
+                        title: 'Crowd Euphoria',
+                        description: 'Capturing the moment when the crowd becomes one with the music.'
+                    },
+                    {
+                        type: 'photo',
+                        category: 'studio',
+                        src: './Asstes/photo-1553190842-24c3f93ba116.avif',
+                        title: 'Studio Vibes',
+                        description: 'Creative energy flowing in the recording studio.'
+                    },
+                    {
+                        type: 'photo',
+                        category: 'live',
+                        src: './Asstes/photo-1577648884063-1d3d1477b8a7.avif',
+                        title: 'Concert Energy',
+                        description: 'Pure energy and atmosphere from live concert performance.'
+                    }
+                ];
+            }
+        }
+
+        const galleryData = loadGalleryData();
+
+        let currentFilter = 'all';
+        let filteredData = galleryData;
+        let currentModalIndex = 0;
+
+        // Load Gallery
+        function loadGallery() {
+            const grid = document.getElementById('galleryGrid');
+            grid.innerHTML = '';
+
+            filteredData.forEach((item, index) => {
+                const galleryItem = createGalleryItem(item, index);
+                grid.appendChild(galleryItem);
+            });
+        }
+
+        // Create Gallery Item
+        function createGalleryItem(item, index) {
+            const div = document.createElement('div');
+            div.className = `gallery-item ${item.category}`;
+            div.setAttribute('data-category', item.category);
+            div.setAttribute('data-type', item.type);
+
+            const mediaElement = item.type === 'video' ?
+                `<video src="${item.src}" muted loop onloadstart="this.volume=0.1"></video>` :
+                `<img src="${item.src}" alt="${item.title}">`;
+
+            div.innerHTML = `
+                ${mediaElement}
+                <div class="media-badge">
+                    <i class="fas fa-${item.type === 'video' ? 'play' : 'image'}"></i>
+                    ${item.type.toUpperCase()}
+                </div>
+                <div class="gallery-overlay">
+                    <i class="fas fa-${item.type === 'video' ? 'play-circle' : 'expand'}"></i>
+                </div>
+                <div class="gallery-info">
+                    <h3>${item.title}</h3>
+                    <p>${item.description}</p>
+                </div>
+            `;
+
+            div.addEventListener('click', () => openModal(index));
+
+            // Add hover effect for videos
+            if (item.type === 'video') {
+                const video = div.querySelector('video');
+                div.addEventListener('mouseenter', () => video.play());
+                div.addEventListener('mouseleave', () => {
+                    video.pause();
+                    video.currentTime = 0;
+                });
+            }
+
+            return div;
+        }
+
+        // Filter Gallery
+        function filterGallery(filter) {
+            currentFilter = filter;
+            filteredData = filter === 'all' ? galleryData : galleryData.filter(item =>
+                item.category === filter || item.type === filter
+            );
+            loadGallery();
+
+            // Update active filter button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-filter') === filter) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // Modal Functions
+        function openModal(index) {
+            currentModalIndex = index;
+            const item = filteredData[index];
+            const modal = document.getElementById('galleryModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalVideo = document.getElementById('modalVideo');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+            const modalCounter = document.getElementById('modalCounter');
+
+            // Hide both media elements first
+            modalImage.classList.add('hidden');
+            modalVideo.classList.add('hidden');
+
+            // Show appropriate media element
+            if (item.type === 'video') {
+                modalVideo.src = item.src;
+                modalVideo.classList.remove('hidden');
+            } else {
+                modalImage.src = item.src;
+                modalImage.classList.remove('hidden');
+            }
+
+            modalTitle.textContent = item.title;
+            modalDescription.textContent = item.description;
+            modalCounter.textContent = `${index + 1} of ${filteredData.length}`;
+
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('galleryModal');
+            const modalVideo = document.getElementById('modalVideo');
+
+            modal.classList.add('hidden');
+            modalVideo.pause();
+            document.body.style.overflow = 'auto';
+        }
+
+        function nextItem() {
+            currentModalIndex = (currentModalIndex + 1) % filteredData.length;
+            openModal(currentModalIndex);
+        }
+
+        function prevItem() {
+            currentModalIndex = (currentModalIndex - 1 + filteredData.length) % filteredData.length;
+            openModal(currentModalIndex);
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            loadGallery();
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', () => {
+                const navbar = document.getElementById('navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterGallery(btn.getAttribute('data-filter'));
+                });
+            });
+
+            // Modal controls
+            document.getElementById('closeModal').addEventListener('click', closeModal);
+            document.getElementById('nextItem').addEventListener('click', nextItem);
+            document.getElementById('prevItem').addEventListener('click', prevItem);
+
+            // Modal backdrop click
+            document.getElementById('galleryModal').addEventListener('click', (e) => {
+                if (e.target.id === 'galleryModal') {
+                    closeModal();
+                }
+            });
+
+            // Keyboard controls
+            document.addEventListener('keydown', (e) => {
+                const modal = document.getElementById('galleryModal');
+                if (!modal.classList.contains('hidden')) {
+                    switch (e.key) {
+                        case 'Escape':
+                            closeModal();
+                            break;
+                        case 'ArrowLeft':
+                            prevItem();
+                            break;
+                        case 'ArrowRight':
+                            nextItem();
+                            break;
+                    }
+                }
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    
+    <!-- Load dynamic components -->
+    <script src="main.js"></script>
+</body>
+
+</html>
