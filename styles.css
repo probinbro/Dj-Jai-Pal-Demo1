@@ -790,6 +790,26 @@ section {
     }
 }
 
+@media (max-width: 768px) {
+    .packages-grid {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .package-card {
+        padding: 1.5rem;
+        margin: 0 1rem;
+    }
+
+    .package-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .package-price {
+        font-size: 2.5rem;
+    }
+}
+
 /* Gallery Section */
 #gallery {
     background-color: var(--panel-color);
